@@ -14,7 +14,7 @@
     <xsd:simpleType name="logicalNameReference">
         <xsd:restriction base="xsd:token">
             <xsd:whiteSpace value="collapse"/>
-            <xsd:pattern value="[0-9A-Z_]{0,63}"/>
+            <xsd:pattern value="[0-9A-Z_a-z]{0,63}"/>
         </xsd:restriction>
     </xsd:simpleType>
 
@@ -102,13 +102,6 @@
                          minOccurs="0"/>
             <xsd:element name="defaultValue" type="xsd:string"
                          minOccurs="0"/>
-            <xsd:element name="options" minOccurs="0">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element name="option" type="dcp.csv:option" maxOccurs="unbounded"/>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
         </xsd:sequence>
     </xsd:group>
 
@@ -117,6 +110,13 @@
             <xsd:element name="properties" minOccurs="0">
                 <xsd:complexType>
                     <xsd:group ref="dcp.csv:properties"/>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="options" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="option" type="dcp.csv:option" maxOccurs="unbounded"/>
+                    </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>
             <xsd:element name="children" minOccurs="0">
@@ -174,8 +174,9 @@
                 <xsd:element name="attributes" minOccurs="0"
                              maxOccurs="1">
                     <xsd:complexType>
-                        <xsd:sequence minOccurs="0"
-                                      maxOccurs="unbounded">
+                        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+                            <xsd:element name="parentAttribute">
+                            </xsd:element>
                             <xsd:element name="attribute">
                                 <xsd:complexType>
                                     <xsd:group
@@ -184,7 +185,7 @@
                                             ref="dcp.csv:elementAttributes"/>
                                 </xsd:complexType>
                             </xsd:element>
-                        </xsd:sequence>
+                        </xsd:choice>
                     </xsd:complexType>
                 </xsd:element>
                 <xsd:element name="parameters" minOccurs="0"

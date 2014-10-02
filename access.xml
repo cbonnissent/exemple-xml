@@ -1,13 +1,17 @@
 <!DOCTYPE access [
-        <!ELEMENT access (right)*>
-        <!ATTLIST access>
-        <!ELEMENT right (#PCDATA)>
-        <!ATTLIST right
+        <!ELEMENT access (enabled|disabled)*>
+        <!ELEMENT enabled (#PCDATA)>
+        <!ATTLIST enabled
+                account CDATA #REQUIRED
+                acl CDATA #REQUIRED>
+        <!ELEMENT disabled (#PCDATA)>
+        <!ATTLIST disabled
                 acl CDATA #REQUIRED
                 account CDATA #REQUIRED>
         ]>
 <access>
-    <right acl="view" account="MY_ROLE"/>
-    <right acl="edit" account="MY_ATTRIBUTE"/>
-    <right acl="pouet" account="Toto"/>
+    <enabled acl="view" account="MY_ROLE"/>
+    <enabled acl="edit" account="MY_ATTRIBUTE"/>
+    <enabled acl="pouet" account="Toto"/>
+    <disabled acl="pouet" account="Toto"/>
 </access>

@@ -1,17 +1,17 @@
 <!DOCTYPE profils [
         <!ELEMENT profils (profil)*>
-        <!ELEMENT profil (right)*>
+        <!ELEMENT profil (enabled)*>
         <!ATTLIST profil
                 name CDATA #REQUIRED>
-        <!ELEMENT right (#PCDATA)>
-        <!ATTLIST right
+        <!ELEMENT enabled (#PCDATA)>
+        <!ATTLIST enabled
                 account CDATA #REQUIRED
                 name CDATA #REQUIRED>
         ]>
 <profils>
     <profil name="prf_admin_edit">
-        <right name="view" account="MY_ROLE"/>
-        <right name="edit" account="MY_ATTRIBUTE"/>
-        <right name="pouet" account="Toto"/>
+        <enabled name="view" account="MY_ROLE"/>
+        <enabled name="edit" account="MY_ATTRIBUTE"/>
+        <enabled name="pouet" account="Toto"/>
     </profil>
 </profils>

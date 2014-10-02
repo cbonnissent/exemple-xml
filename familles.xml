@@ -1,24 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<family version="0.1"
-    xmlns="http://www.dynacase.org/XSD/xmlToCsvFamily"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.dynacase.org/XSD/xmlToCsvFamily family.xsd"
-    name="FIRST_FAMILY" fatherFamily="TAGADA" title="My first family" >
+<!DOCTYPE family [
+        <!ELEMENT family (properties?|attributes?)*>
+        <!ATTLIST family
+                name CDATA #REQUIRED
+                fatherFamily CDATA #REQUIRED
+                title CDATA #REQUIRED>
+        <!ELEMENT properties (property|inTitle|defaultValue|helper)*>
+        <!ELEMENT property (#PCDATA)>
+        <!ATTLIST property
+                name CDATA #REQUIRED>
+        <!ELEMENT attributes (parentBeforeAttribute|attribute|parentAttribute)*>
+        <!ELEMENT parentBeforeAttribute (#PCDATA)>
+        <!ATTLIST parentBeforeAttribute
+                name CDATA #REQUIRED
+                type CDATA #IMPLIED>
+        <!ELEMENT attribute (children|properties|options)*>
+        <!ATTLIST attribute
+                inherited CDATA #IMPLIED
+                name CDATA #REQUIRED
+                type CDATA #IMPLIED>
+        <!ELEMENT children (attribute|parentBeforeAttribute)*>
+        <!ELEMENT inTitle (#PCDATA)>
+        <!ELEMENT defaultValue (#PCDATA)>
+        <!ELEMENT options (option)*>
+        <!ELEMENT option (#PCDATA)>
+        <!ATTLIST option
+                name CDATA #REQUIRED>
+        <!ELEMENT helper (file|function)*>
+        <!ELEMENT file (#PCDATA)>
+        <!ELEMENT function (#PCDATA)>
+        <!ELEMENT parentAttribute (children)*>
+        <!ATTLIST parentAttribute
+                name CDATA #REQUIRED>
+        ]>
+<family
+    name="FIRST_FAMILY" fatherFamily="DEFAULT_FAMILY" title="My first family" >
     <properties>
-        <property name="PROP">property</property>
+        <property name="WID">MY_SUPER_WORKFLOW</property>
+        <property name="CLASS">\MonProjet\MaClass</property>
     </properties>
     <attributes>
+        <parentBeforeAttribute name="df_f_first"/>
         <attribute name="ff_f_desc" type="frame">
             <children>
                 <attribute name="ff_title" type="text">
                     <properties>
                         <inTitle>true</inTitle>
                         <defaultValue><![CDATA[Du contenu    p  ]]></defaultValue>
-                        <options>
-                            <option name="enum"><![CDATA[testounet]]></option>
-                            <option name="whatisthat"><![CDATA[toutout]]></option>
-                        </options>
                     </properties>
+                    <options>
+                        <option name="enum"><![CDATA[testounet]]></option>
+                        <option name="whatisthat"><![CDATA[toutout]]></option>
+                    </options>
                 </attribute>
                 <attribute name="ff_creator" type="account">
                     <properties>
@@ -36,5 +69,16 @@
                 </attribute>
             </children>
         </attribute>
+        <parentAttribute name="df_a_files">
+            <children>
+                <parentBeforeAttribute name="ff_f_desc" type="frame"/>
+                <attribute name="ff_file_proprio" type="account"/>
+                <attribute name="df_file_date" inherited="true" >
+                    <properties>
+                        <defaultValue>::getDate()</defaultValue>
+                    </properties>
+                </attribute>
+            </children>
+        </parentAttribute>
     </attributes>
 </family>
