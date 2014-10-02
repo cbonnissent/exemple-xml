@@ -3,15 +3,17 @@
         <!ELEMENT grant (#PCDATA)>
         <!ATTLIST grant
                 account CDATA #REQUIRED
-                acl CDATA #REQUIRED>
+                acl CDATA #REQUIRED
+                application CDATA #REQUIRED>
         <!ELEMENT revoke (#PCDATA)>
         <!ATTLIST revoke
+                application CDATA #REQUIRED
                 acl CDATA #REQUIRED
                 account CDATA #REQUIRED>
         ]>
 <access>
-    <grant acl="view" account="MY_ROLE"/>
-    <grant acl="edit" account="MY_ATTRIBUTE"/>
-    <grant acl="pouet" account="Toto"/>
-    <revoke acl="pouet" account="Toto"/>
+    <grant application="MY_APP" acl="view" account="MY_ROLE"/>
+    <grant application="MY_APP" acl="edit" account="MY_ATTRIBUTE"/>
+    <grant application="MY_APP" acl="pouet" account="Toto"/>
+    <revoke application="MY_APP" acl="pouet" account="Toto"/>
 </access>
