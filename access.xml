@@ -1,17 +1,17 @@
 <!DOCTYPE access [
-        <!ELEMENT access (enabled|disabled)*>
-        <!ELEMENT enabled (#PCDATA)>
-        <!ATTLIST enabled
+        <!ELEMENT access (grant|revoke)*>
+        <!ELEMENT grant (#PCDATA)>
+        <!ATTLIST grant
                 account CDATA #REQUIRED
                 acl CDATA #REQUIRED>
-        <!ELEMENT disabled (#PCDATA)>
-        <!ATTLIST disabled
+        <!ELEMENT revoke (#PCDATA)>
+        <!ATTLIST revoke
                 acl CDATA #REQUIRED
                 account CDATA #REQUIRED>
         ]>
 <access>
-    <enabled acl="view" account="MY_ROLE"/>
-    <enabled acl="edit" account="MY_ATTRIBUTE"/>
-    <enabled acl="pouet" account="Toto"/>
-    <disabled acl="pouet" account="Toto"/>
+    <grant acl="view" account="MY_ROLE"/>
+    <grant acl="edit" account="MY_ATTRIBUTE"/>
+    <grant acl="pouet" account="Toto"/>
+    <revoke acl="pouet" account="Toto"/>
 </access>

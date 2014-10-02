@@ -1,17 +1,17 @@
 <!DOCTYPE profils [
         <!ELEMENT profils (profil)*>
-        <!ELEMENT profil (enabled)*>
+        <!ELEMENT profil (grant)*>
         <!ATTLIST profil
                 name CDATA #REQUIRED>
-        <!ELEMENT enabled (#PCDATA)>
-        <!ATTLIST enabled
+        <!ELEMENT grant (#PCDATA)>
+        <!ATTLIST grant
                 account CDATA #REQUIRED
                 name CDATA #REQUIRED>
         ]>
 <profils>
     <profil name="prf_admin_edit">
-        <enabled name="view" account="MY_ROLE"/>
-        <enabled name="edit" account="MY_ATTRIBUTE"/>
-        <enabled name="pouet" account="Toto"/>
+        <grant name="view" account="MY_ROLE"/>
+        <grant name="edit" account="MY_ATTRIBUTE"/>
+        <grant name="pouet" account="Toto"/>
     </profil>
 </profils>

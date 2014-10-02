@@ -3,7 +3,7 @@
         <!ELEMENT family (properties?|attributes?)*>
         <!ATTLIST family
                 name CDATA #REQUIRED
-                fatherFamily CDATA #REQUIRED
+                parentFamily CDATA #REQUIRED
                 title CDATA #REQUIRED>
         <!ELEMENT properties (property|inTitle|defaultValue|helper)*>
         <!ELEMENT property (#PCDATA)>
@@ -34,13 +34,13 @@
                 name CDATA #REQUIRED>
         ]>
 <family
-    name="FIRST_FAMILY" fatherFamily="DEFAULT_FAMILY" title="My first family" >
+    name="FIRST_FAMILY" parentFamily="DEFAULT_FAMILY" title="My first family" >
     <properties>
         <property name="WID">MY_SUPER_WORKFLOW</property>
         <property name="CLASS">\MonProjet\MaClass</property>
     </properties>
     <attributes>
-        <parentBeforeAttribute name="df_f_first"/>
+        <parentAttribute name="df_f_first"/>
         <attribute name="ff_f_desc" type="frame">
             <children>
                 <attribute name="ff_title" type="text">
