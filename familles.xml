@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<family version="0.1"
+    xmlns="http://www.dynacase.org/XSD/xmlToCsvFamily"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.dynacase.org/XSD/xmlToCsvFamily family.xsd"
+    name="FIRST_FAMILY" fatherFamily="TAGADA" title="My first family" >
+    <properties>
+        <property name="PROP">property</property>
+    </properties>
+    <attributes>
+        <attribute name="ff_f_desc" type="frame">
+            <children>
+                <attribute name="ff_title" type="text">
+                    <properties>
+                        <inTitle>true</inTitle>
+                        <defaultValue><![CDATA[Du contenu    p  ]]></defaultValue>
+                        <options>
+                            <option name="enum"><![CDATA[testounet]]></option>
+                            <option name="whatisthat"><![CDATA[toutout]]></option>
+                        </options>
+                    </properties>
+                </attribute>
+                <attribute name="ff_creator" type="account">
+                    <properties>
+                        <helper>
+                            <file>HelperOfTheProject.php</file>
+                            <function>MyHelper(CT):ff_creator</function>
+                        </helper>
+                        <defaultValue>::getUserId()</defaultValue>
+                    </properties>
+                </attribute>
+                <attribute name="ff_a_redactors" type="array">
+                    <children>
+                        <attribute name="ff_redactor" type="account"/>
+                    </children>
+                </attribute>
+            </children>
+        </attribute>
+    </attributes>
+</family>

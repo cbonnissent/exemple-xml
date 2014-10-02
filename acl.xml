@@ -1,0 +1,13 @@
+<!DOCTYPE acl [
+        <!ELEMENT acl (right)*>
+        <!ATTLIST acl>
+        <!ELEMENT right (#PCDATA)>
+        <!ATTLIST right
+                acl CDATA #REQUIRED
+                account CDATA #REQUIRED>
+        ]>
+<acl>
+    <right acl="view" account="MY_ROLE"/>
+    <right acl="edit" account="MY_ATTRIBUTE"/>
+    <right acl="pouet" account="Toto"/>
+</acl>

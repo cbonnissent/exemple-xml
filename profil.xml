@@ -1,0 +1,14 @@
+<!DOCTYPE profil [
+        <!ELEMENT profil (right)*>
+        <!ATTLIST profil
+                name CDATA #REQUIRED>
+        <!ELEMENT right (#PCDATA)>
+        <!ATTLIST right
+                account CDATA #REQUIRED
+                name CDATA #REQUIRED>
+        ]>
+<profil name="prf_admin_edit">
+    <right name="view" account="MY_ROLE"/>
+    <right name="edit" account="MY_ATTRIBUTE"/>
+    <right name="pouet" account="Toto"/>
+</profil>
