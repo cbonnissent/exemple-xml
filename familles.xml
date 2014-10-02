@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE family [
-        <!ELEMENT family (properties?|attributes?)*>
+        <!ELEMENT family (properties|attributes)*>
         <!ATTLIST family
                 name CDATA #REQUIRED
                 parentFamily CDATA #REQUIRED
@@ -9,17 +9,16 @@
         <!ELEMENT property (#PCDATA)>
         <!ATTLIST property
                 name CDATA #REQUIRED>
-        <!ELEMENT attributes (parentBeforeAttribute|attribute|parentAttribute)*>
-        <!ELEMENT parentBeforeAttribute (#PCDATA)>
-        <!ATTLIST parentBeforeAttribute
-                name CDATA #REQUIRED
-                type CDATA #IMPLIED>
+        <!ELEMENT attributes (parentAttribute|attribute)*>
+        <!ELEMENT parentAttribute (children)*>
+        <!ATTLIST parentAttribute
+                name CDATA #REQUIRED>
         <!ELEMENT attribute (children|properties|options)*>
         <!ATTLIST attribute
                 inherited CDATA #IMPLIED
                 name CDATA #REQUIRED
                 type CDATA #IMPLIED>
-        <!ELEMENT children (attribute|parentBeforeAttribute)*>
+        <!ELEMENT children (attribute|parentAttribute)*>
         <!ELEMENT inTitle (#PCDATA)>
         <!ELEMENT defaultValue (#PCDATA)>
         <!ELEMENT options (option)*>
@@ -29,9 +28,6 @@
         <!ELEMENT helper (file|function)*>
         <!ELEMENT file (#PCDATA)>
         <!ELEMENT function (#PCDATA)>
-        <!ELEMENT parentAttribute (children)*>
-        <!ATTLIST parentAttribute
-                name CDATA #REQUIRED>
         ]>
 <family
     name="FIRST_FAMILY" parentFamily="DEFAULT_FAMILY" title="My first family" >
@@ -71,7 +67,7 @@
         </attribute>
         <parentAttribute name="df_a_files">
             <children>
-                <parentBeforeAttribute name="ff_f_desc" type="frame"/>
+                <parentAttribute name="df_file"/>
                 <attribute name="ff_file_proprio" type="account"/>
                 <attribute name="df_file_date" inherited="true" >
                     <properties>
