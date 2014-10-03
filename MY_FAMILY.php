@@ -18,7 +18,7 @@ class MY_FAMILY extends \dcp\Family\Definition
     public function defineStruct()
     {
         parent::defineStruct();
-        $this->struct
+        $this->getStructure()
             ->before("df_f_first")
             ->add(new Struct("ff_f_desc", Struct::frame, new ChildrenSet([
                 new Attr("ff_title", Attr::test, new Options([
