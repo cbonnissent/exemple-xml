@@ -11,13 +11,22 @@ use \dcp\Family\Attribute\Attribute as Attr;
 use \dcp\Family\Attribute\ChildrenSet as ChildrenSet;
 use \dcp\Family\Attribute\Options as Options;
 use \dcp\Family\Attribute\ParentAttribute as ParentAttribute;
+use \dcp\Family\Attribute\FamilyProperties as Properties;
 
 class MY_FAMILY extends \dcp\Family\Definition
 {
 
-    public function defineStruct()
+    public function defineProperties() {
+        parent::defineProperties();
+        $this->getProperties()
+            ->set(Properties::Workflow, "MY_SUPER_WORKFLOW")
+            ->set(Properties::MyClass, "\\MonProjet\\MaClass");
+    }
+
+
+    public function defineStructure()
     {
-        parent::defineStruct();
+        parent::defineStructure();
         $this->getStructure()
             ->before("df_f_first")
             ->add(new Struct("ff_f_desc", Struct::frame, new ChildrenSet([
