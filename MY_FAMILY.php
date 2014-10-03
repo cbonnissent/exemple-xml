@@ -28,7 +28,7 @@ class MY_FAMILY extends \dcp\Family\Definition
     {
         parent::defineStructure();
         $this->getStructure()
-            ->before("df_f_first")
+            ->add(new ParentAttribute("df_f_first"))
             ->add(new Struct("ff_f_desc", Struct::frame, new ChildrenSet([
                 new Attr("ff_title", Attr::test, new Options([
                     Options::inTitle => true,
