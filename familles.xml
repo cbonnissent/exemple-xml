@@ -5,7 +5,7 @@
                 name CDATA #REQUIRED
                 parentFamily CDATA #REQUIRED
                 title CDATA #REQUIRED>
-        <!ELEMENT properties (property|inTitle|defaultValue|helper)*>
+        <!ELEMENT properties (property|inTitle|defaultValue|helper|labelPosition)*>
         <!ELEMENT property (#PCDATA)>
         <!ATTLIST property
                 name CDATA #REQUIRED>
@@ -28,6 +28,7 @@
         <!ELEMENT helper (file|function)*>
         <!ELEMENT file (#PCDATA)>
         <!ELEMENT function (#PCDATA)>
+        <!ELEMENT labelPosition (#PCDATA)>
         ]>
 <family
     name="FIRST_FAMILY" parentFamily="DEFAULT_FAMILY" title="My first family" >
@@ -59,6 +60,9 @@
                     </properties>
                 </attribute>
                 <attribute name="ff_a_redactors" type="array">
+                    <properties>
+                        <labelPosition>up</labelPosition>
+                    </properties>
                     <children>
                         <attribute name="ff_redactor" type="account"/>
                     </children>
